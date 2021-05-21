@@ -9,7 +9,7 @@ import ArticlePreview from "../components/articlePreview";
 
 const Articles = ({ data }) => {
   const articles = data.allNodeArticle.nodes;
-
+  console.log(articles);
   return (
     <Layout>
       <SEO title = "Articles" />
@@ -20,7 +20,8 @@ const Articles = ({ data }) => {
           title = {article.title}
           path = {article.path.alias}
           body = {article.body.processed}
-          image = {article.relationships.field_image.localFile.childImageSharp.fluid}
+          image = {article.relationships.field_image.localFile.childImageSharp.gatsbyImageData}
+          
         />
       ))} 
     </Layout>
@@ -47,9 +48,11 @@ export const data =  graphql`
           field_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 600){
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(
+                  width: 200
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }

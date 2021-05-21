@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
-
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 
 const ArticlePreview = ({ title, path, body, image }) => {
+  console.log(image);
 
   return (
     <div>
@@ -12,7 +12,7 @@ const ArticlePreview = ({ title, path, body, image }) => {
         <h1>{title}</h1>
       </Link>
       <br/>
-      <Img fluid={image} alt="test" />
+      <GatsbyImage image={image} alt="aze" />
       <div dangerouslySetInnerHTML = {{ __html: body }}/> 
     </div>
   )
@@ -21,8 +21,10 @@ const ArticlePreview = ({ title, path, body, image }) => {
 ArticlePreview.propTypes = {
   title: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
 }
 
 export default ArticlePreview;
 
+//
