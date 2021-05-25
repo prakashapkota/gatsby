@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import { Link } from "gatsby"
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -13,17 +14,19 @@ const Articles = ({ data }) => {
   return (
     <Layout>
       <SEO title = "Articles" />
-      <h1>Articles</h1> 
+      <h1>Articles (articles/images dynamic depuis drupal)</h1> 
       {articles.map(article => (
         <ArticlePreview 
           key={article.id}
           title = {article.title}
+          langcode = {article.path.langcode}
           path = {article.path.alias}
           body = {article.body.processed}
           image = {article.relationships.field_image.localFile.childImageSharp.gatsbyImageData}
           
         />
       ))} 
+      <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
 }
@@ -42,6 +45,7 @@ export const data =  graphql`
           processed
         }
         path{
+          langcode
           alias
         }
         relationships {

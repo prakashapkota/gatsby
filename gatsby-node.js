@@ -22,6 +22,7 @@ exports.createPages = async ({ actions, graphql }) => {
           processed
         }
         path {
+          langcode
           alias
         }
         field_image {
@@ -32,7 +33,7 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   }
   `);
-
+  console.log(articles);
   articles.data.allNodeArticle.nodes.map(articleData =>
     createPage({
       path : articleData.path.alias,

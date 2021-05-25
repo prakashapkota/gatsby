@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 
-const ArticlePreview = ({ title, path, body, image }) => {
+const ArticlePreview = ({ title, langcode, path, body, image }) => {
   console.log(image);
 
   return (
